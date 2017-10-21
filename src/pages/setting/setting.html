@@ -1,0 +1,19 @@
+<ion-header>
+  
+    <ion-navbar color="primary">
+      <ion-title>กำหนดค่าใช้งาน</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content>
+    <ion-list no-lines>
+      <ion-list-header>Settings</ion-list-header>
+      <ion-item>
+        <ion-label>รับข้อมูลข่่าวสาร</ion-label>
+        <ion-toggle color="danger" [(ngModel)]="accept" (ionChange)="changeToggle()"></ion-toggle>
+      </ion-item>
+    
+    </ion-list>
+  </ion-content>

@@ -1,0 +1,33 @@
+<ion-header>
+  
+  
+  <ion-navbar color="danger">
+  
+    <ion-title>ตาดี-หูไว แอพพิเคชั่น </ion-title>
+   
+  </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+  
+  <ion-list>
+    <ion-list-header>ระบุชื่อผู้ใช้งานและรหัสผ่าน</ion-list-header>
+    <ion-item>
+      <ion-label floating>ชื่อผู้ใช้งาน</ion-label>
+      <ion-input type="text" [(ngModel)]="username"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating>รหัสผ่าน</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+  
+  </ion-list>
+  
+  <div padding>
+    <button ion-button color="primary" block (click)="login()" [disabled]="!username || !password">Sign In</button>
+  </div>
+  
+  </ion-content>

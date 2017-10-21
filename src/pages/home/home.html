@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar color="danger">
+        <ion-title><h1>ตาดี-หูไว แอพพิเคชั่น</h1></ion-title>
+        
+      </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-header>
+          สรุปข้อมูลเรื่องร้องเรียนผ่าน ตาดี-หูไว แอพพิเคชั่น
+        </ion-card-header>
+      
+        <ion-list>
+          <button ion-item>
+            <ion-icon name="pulse" item-start></ion-icon>
+           จังหวัดนครราชสีมา
+          </button>
+      
+          <button ion-item>
+            <ion-icon name="pulse" item-start></ion-icon>
+            จังหวัดชัยภูมิ
+          </button>
+      
+          <button ion-item>
+            <ion-icon name="pulse" item-start></ion-icon>
+          จังหวัดบุรีรัมย์
+          </button>
+      
+          <button ion-item (click)="gotoSurin('http://192.168.1.11/cdsr9/frontend/web/index.php?r=pulldata/index4')">
+            <ion-icon name="pulse" item-start></ion-icon>
+           จังหวัดสุรินทร์
+          </button>
+      
+      
+        </ion-list>
+      </ion-card>
+</ion-content>

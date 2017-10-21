@@ -1,0 +1,8 @@
+{
+  "name": "cds",
+  "app_id": "abf7526b",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

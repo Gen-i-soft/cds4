@@ -1,0 +1,29 @@
+
+<ion-header>
+
+  <ion-navbar color="danger">
+    <ion-title>googlemap</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<div #map id="map"></div>
+</ion-content>
+
+
+<ion-footer>
+<ion-toolbar>
+  <p>{{ customerLat }} , {{ customerLng }}</p>
+  <ion-buttons end>
+    <button ion-button icon-only color="primary" 
+    (click)="sendMap()" [disabled]="!customerLat || !customerLng">
+      <ion-icon name="pin"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-toolbar>
+</ion-footer>

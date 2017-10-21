@@ -1,0 +1,213 @@
+
+<!-- copy -->
+
+
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title><h1>ตาดี-หูไว แอพพิเคชั่น</h1></ion-title>
+    
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-item-group>
+        <ion-item-divider color="light">ร้องเรียน/เตือนภัย/แจ้งเหตุ/แจ้งเบาะแส</ion-item-divider>
+    </ion-item-group>
+
+    <ion-item-group>
+
+       
+          
+              <ion-label>เลือกพิกัดที่เกิดเหตุจากแผนที่</ion-label>
+    
+              <p>{{ customerLat }} , {{ customerLng }}</p>
+            
+              <ion-row center>  
+                <ion-col text-center>   
+
+                <button ion-button  color="primary" round (click)="gotoMap()" 
+                >
+                <ion-icon name="pin"></ion-icon>&nbsp;GPS
+                
+                   
+                  </button>
+                 </ion-col>
+              </ion-row>
+           
+   
+     
+  </ion-item-group>
+
+<ion-item-group>
+   
+        <ion-item>
+          <ion-label floating>ใคร</ion-label>
+          <ion-input type="text" [(ngModel)]="iwho"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label floating>ทำอะไร</ion-label>
+          <ion-input type="text" [(ngModel)]="iwhat"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>ที่ไหน(หมู่บ้าน ตำบล อำเภอ)</ion-label>
+            <ion-input type="text" [(ngModel)]="iwhere"></ion-input>
+          </ion-item>
+    
+        <ion-item>
+          <ion-label>ระบุจังหวัด***</ion-label>
+          <ion-select [(ngModel)]="iprovince">
+            <ion-option [value]="s.id" *ngFor="let s of iprovinces">
+              {{ s.name }}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+
+       
+        <ion-item>
+            <ion-label floating>เมื่อไร(วันที่ เวลา)</ion-label>
+            <ion-input type="text" [(ngModel)]="iwhen"></ion-input>
+          </ion-item>
+    
+          <ion-item>
+              <ion-label floating>อย่างไร</ion-label>
+              <ion-input type="text" [(ngModel)]="ihow"></ion-input>
+            </ion-item>
+      
+
+
+            <ion-item>
+                <ion-label floating>ข้อมูลอื่นๆ/เพิ่มเติม</ion-label>
+                <ion-input type="text" [(ngModel)]="ietc"></ion-input>
+              </ion-item>
+
+
+         
+    
+      </ion-item-group>
+
+      
+      <ion-item-group>
+          <ion-item-divider color="light">รูปภาพ</ion-item-divider>
+          <ion-card>
+      
+          <ion-item>
+            <ion-avatar item-left>
+              <img src="./assets/img/camera.png">
+            </ion-avatar>
+            <h2>ถ่ายภาพจากกล้องหรือเลือกภาพจากแกลอรี่</h2>
+            
+          </ion-item>
+      
+          <img [src]="base64Image" *ngIf="base64Image">
+          <img src="./assets/img/placeholder-customer.png" *ngIf="!base64Image">
+      
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-left clear small (click)="takePicture()">
+                <ion-icon name="camera"></ion-icon>
+               
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-left clear small (click)="browsePicture()">
+                <ion-icon name="folder-open"></ion-icon>
+                
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-left clear small color="danger" 
+              (click)="removePicture()" [disabled]="!base64Image">
+                <ion-icon name="trash"></ion-icon>
+               
+              </button>
+            </ion-col>
+          </ion-row>
+      
+        </ion-card>
+
+
+        <!-- pict-2 -->
+
+        <ion-card>
+          
+              <ion-item>
+                <ion-avatar item-left>
+                  <img src="./assets/img/camera.png">
+                </ion-avatar>
+                <h2>รูปที่ 2</h2>
+               
+              </ion-item>
+          
+              <img [src]="base64Image2" *ngIf="base64Image2">
+              <img src="./assets/img/placeholder-customer.png" *ngIf="!base64Image2">
+          
+              <ion-row>
+                <ion-col>
+                  <button ion-button icon-left clear small (click)="takePicture2()">
+                    <ion-icon name="camera"></ion-icon>
+                   
+                  </button>
+                </ion-col>
+                <ion-col>
+                  <button ion-button icon-left clear small (click)="browsePicture2()">
+                    <ion-icon name="folder-open"></ion-icon>
+                  
+                  </button>
+                </ion-col>
+                <ion-col>
+                  <button ion-button icon-left clear small color="danger" 
+                  (click)="removePicture2()" [disabled]="!base64Image2">
+                    <ion-icon name="trash"></ion-icon>
+                   
+                  </button>
+                </ion-col>
+              </ion-row>
+          
+            </ion-card> 
+
+            <!-- pict3 -->
+        </ion-item-group>
+
+      <ion-item-group>
+          <ion-item-divider color="light">ข้อมูลผู้ร้องเรียน(ระบุหรือไม่ก็ได้)</ion-item-divider>
+
+          <ion-item>
+              <ion-label floating>อีเมล์</ion-label>
+              <ion-input type="email" [(ngModel)]="email"></ion-input>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label floating>โทรศัพท์</ion-label>
+              <ion-input type="telephone" [(ngModel)]="telephone"></ion-input>
+            </ion-item>
+
+          <!-- <ion-item>
+            <ion-label>ประเภทลูกค้า</ion-label>
+            <ion-select [(ngModel)]="customerTypeId">
+              <ion-option [value]="group.id" *ngFor="let group of groups">
+                {{ group.name }}
+              </ion-option>
+            </ion-select>
+          </ion-item>
+       -->
+        </ion-item-group>
+      
+
+        <ion-item-group>
+            <!-- <button ion-button color="danger" round>Danger Round</button> -->
+            <ion-row center>  
+                <ion-col text-center>   
+            <button ion-button  color="primary" round (click)="save()">
+                <ion-icon name="send"></ion-icon>
+               <div>ส่งข้อมูล</div> 
+              </button>
+              </ion-col>
+              </ion-row>
+
+        </ion-item-group>
+
+
+        
+</ion-content>
